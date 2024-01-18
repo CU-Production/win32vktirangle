@@ -205,6 +205,8 @@ LRESULT WINAPI WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) {
 }
 
 void create_window_win32(const char* window_name) {
+    SetProcessDPIAware();
+
     WNDCLASSEXW wc = { sizeof(wc), CS_OWNDC, WndProc, 0L, 0L, GetModuleHandle(NULL), NULL, NULL, NULL, NULL, window_name, NULL };
     init.wc = wc;
     RegisterClassExW(&init.wc);
